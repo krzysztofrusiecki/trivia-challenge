@@ -1,5 +1,7 @@
 import React from 'react';
 
-const App: React.FC = () => <div>App</div>;
+import GlobalProvider from 'src/providers/GlobalProvider';
+
+const App: React.FC = () => <GlobalProvider>App</GlobalProvider>;
 
 export default App;
