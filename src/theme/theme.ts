@@ -44,6 +44,6 @@ const theme = {
     main: 'Quicksand',
   },
   spacing,
-};
+} as const;
 
 export default theme;
