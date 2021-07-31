@@ -6,5 +6,5 @@ export enum ButtonVariant {
 
 export interface ButtonProps {
   variant?: ButtonVariant;
-  onButtonClick?: () => void;
+  onButtonClick: () => void;
 }
