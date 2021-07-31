@@ -19,9 +19,11 @@ const theme = {
     lightRed: 'hsl(0, 100%, 74%)',
     lightRose: 'hsl(0, 100%, 93%)',
     rose: 'hsl(11, 86%, 77%)',
+    darkRose: 'hsla(0, 50%, 55%)',
     lightBlue: 'hsl(235, 100%, 93%)',
     blue: 'hsl(235, 49%, 51%)',
     darkBlue: 'hsl(235, 41%, 44%)',
+    transparent: 'transparent',
     gradients: {
       rose: 'linear-gradient(90deg, #FFA67A 0%, #FF6065 100%)',
     },
