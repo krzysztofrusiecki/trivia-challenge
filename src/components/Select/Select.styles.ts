@@ -6,6 +6,7 @@ interface SelectOptionProps {
 
 export const SelectWrapper = styled.div`
   width: 100%;
+  margin-bottom: ${({ theme }) => theme.spacing(4.5)};
 `;
 
 export const LabelWrapper = styled.div`
@@ -82,7 +83,7 @@ export const StyledArrowDownIcon = styled.div`
 
 export const StorybookStyledLabel = styled.div`
   height: 30px;
-  margin-bottom: 15px;
+  margin-bottom: ${({ theme }) => theme.spacing(2)};
   display: flex;
   align-items: center;
   color: ${({ theme }) => theme.palette.rose};

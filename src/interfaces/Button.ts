@@ -6,5 +6,6 @@ export enum ButtonVariant {
 
 export interface ButtonProps {
   variant?: ButtonVariant;
+  type?: 'button' | 'submit';
   onButtonClick: () => void;
 }

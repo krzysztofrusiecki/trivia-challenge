@@ -13,11 +13,12 @@ const buttonColorMap = {
 };
 
 const Button: React.FC<ButtonProps> = ({
+  type = 'button',
   variant = ButtonVariant.PRIMARY,
   onButtonClick,
   children,
 }) => (
-  <StyledButton variant={variant} onClick={onButtonClick}>
+  <StyledButton type={type} variant={variant} onClick={onButtonClick}>
     <Typography fontWeight={FontWeight.BOLD} color={buttonColorMap[variant]}>
       {children}
     </Typography>
