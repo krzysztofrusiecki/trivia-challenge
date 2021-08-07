@@ -3,6 +3,7 @@ import _map from 'lodash/map';
 import _reduce from 'lodash/reduce';
 
 import { FontColor, FontWeight } from 'src/interfaces/Typography';
+import { ResultsProps } from 'src/interfaces/Results';
 import Button from 'src/components/Button';
 import ResultCard from 'src/components/ResultCard';
 import Stars from 'src/components/Stars';
@@ -21,18 +22,6 @@ import {
   CloseButtonWrapper,
 } from './Results.styles';
 
-export interface Result {
-  id: string;
-  question: string;
-  isCorrect: boolean;
-}
-
-export interface ResultsProps {
-  results: Result[];
-  onPlayAgainClick: () => void;
-  onCloseButtonClick: () => void;
-}
-
 const Results: React.FC<ResultsProps> = ({
   results,
   onPlayAgainClick,
@@ -40,7 +29,8 @@ const Results: React.FC<ResultsProps> = ({
 }) => {
   const correctAnswersNumber = _reduce(
     results,
-    (acc, result) => (result.isCorrect ? acc + 1 : acc),
+    (acc, result) =>
+      result.correctAnswer === result.userAnswer ? acc + 1 : acc,
     0,
   );
 
@@ -67,7 +57,10 @@ const Results: React.FC<ResultsProps> = ({
         </ResultsHeader>
         <ResultsContainer>
           {_map(results, (result) => (
-            <ResultCard key={result.id} isCorrect={result.isCorrect}>
+            <ResultCard
+              key={result.id}
+              isCorrect={result.correctAnswer === result.userAnswer}
+            >
               {result.question}
             </ResultCard>
           ))}
