@@ -8,7 +8,6 @@ export interface Result {
 
 export interface ResultsProps {
   results: Result[];
-  correctAnswers: number;
   onPlayAgainClick: () => void;
   onCloseButtonClick: () => void;
 }

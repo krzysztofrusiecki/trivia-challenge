@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { ReactComponent as LogoImage } from 'src/assets/logo.svg';
+
 export const MainWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -16,10 +18,21 @@ export const Container = styled.div`
 `;
 
 export const MainHeader = styled.div`
-  width: 707px;
+  width: 600px;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const StyledLogo = styled(LogoImage)`
+  width: 100%;
+  height: 400px;
+
+  & rect {
+    width: 100%;
+    height: 400px;
+  }
 `;
 
 export const FormWrapper = styled.div`
