@@ -15,19 +15,25 @@ const defaultProps = {
       id: '1',
       question:
         'Switzerland has four national languages, English being one of them.',
-      isCorrect: true,
+      category: 'Language',
+      correctAnswer: true,
+      userAnswer: true,
     },
     {
       id: '2',
       question:
         'Switzerland has four national languages, English being one of them.',
-      isCorrect: false,
+      category: 'Language',
+      correctAnswer: false,
+      userAnswer: true,
     },
     {
       id: '3',
       question:
         'Switzerland has four national languages, English being one of them.',
-      isCorrect: true,
+      category: 'Language',
+      correctAnswer: true,
+      userAnswer: true,
     },
   ],
   onPlayAgainClick: action('onPlayAgainClick'),
