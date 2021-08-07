@@ -2,23 +2,26 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import Input from './Input';
-import { StorybookStyledLabel } from './Input.styles';
+import Select from './Select';
+import { StorybookStyledLabel } from './Select.styles';
 
 export default {
-  title: 'components/Input',
-  component: Input,
-} as ComponentMeta<typeof Input>;
+  title: 'components/Select',
+  component: Select,
+} as ComponentMeta<typeof Select>;
 
 const defaultProps = {
-  value: '',
-  label: 'Amount',
+  options: [
+    { id: '', label: 'Select an option' },
+    { id: '1', label: 'Option 1' },
+    { id: '2', label: 'Option 2' },
+  ],
   onChange: action('onChange'),
 };
 
-const Template: ComponentStory<typeof Input> = (args) => (
-  <div style={{ background: '#0000ff', padding: '1rem' }}>
-    <Input {...args} />
+const Template: ComponentStory<typeof Select> = (args) => (
+  <div style={{ background: '#4651C0', padding: '1rem' }}>
+    <Select {...args} />
   </div>
 );
 

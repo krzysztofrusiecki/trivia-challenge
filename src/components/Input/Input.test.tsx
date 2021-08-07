@@ -1,29 +1,41 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 
 import renderWithProviders from 'src/utils/renderWithProviders';
 
 import Input from './Input';
 
-const setup = () => {
-  renderWithProviders(<Input name="test-input" label="Test label" />);
+const setup = (label: React.ReactNode = null) => {
+  const onChange = jest.fn();
+
+  renderWithProviders(<Input value="122" label={label} onChange={onChange} />);
 
   const component = screen.getByTestId('input-test');
-  const label = screen.getByTestId('input-label-test');
+  const inputLabel = screen.queryByTestId('input-label-test');
 
-  return { component, label };
+  return { component, inputLabel, onChange };
 };
 
 describe('Input', () => {
   test('renders', () => {
-    const { component } = setup();
+    const { component, onChange } = setup();
 
     expect(component).toBeInTheDocument();
+
+    fireEvent.change(component, { target: { value: '123' } });
+
+    expect(onChange).toHaveBeenCalledWith('123');
   });
 
   test('renders with a label', () => {
-    const { label } = setup();
+    const { inputLabel } = setup('test label');
 
-    expect(label).toBeInTheDocument();
+    expect(inputLabel).toBeInTheDocument();
+  });
+
+  test('renders without label', () => {
+    const { inputLabel } = setup();
+
+    expect(inputLabel).not.toBeInTheDocument();
   });
 });

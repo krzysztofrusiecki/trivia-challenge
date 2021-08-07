@@ -24,6 +24,7 @@ const theme = {
     blue: 'hsl(235, 49%, 51%)',
     darkBlue: 'hsl(235, 41%, 44%)',
     transparent: 'transparent',
+    blueHover: 'hsl(235, 49%, 60%)',
     gradients: {
       rose: 'linear-gradient(90deg, #FFA67A 0%, #FF6065 100%)',
     },
