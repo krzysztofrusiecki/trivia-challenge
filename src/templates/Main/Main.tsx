@@ -11,7 +11,6 @@ import Select from 'src/components/Select';
 import formatNumericalValue from 'src/utils/formatNumericalValue';
 import { ReactComponent as DifficultyIcon } from 'src/assets/icons/difficulty.svg';
 import { ReactComponent as AmountIcon } from 'src/assets/icons/amount.svg';
-import { ReactComponent as LogoImage } from 'src/assets/logo.svg';
 
 import {
   Container,
@@ -20,6 +19,7 @@ import {
   MainHeader,
   MainWrapper,
   StyledLabel,
+  StyledLogo,
 } from './Main.styles';
 
 const selectOptions = [
@@ -44,7 +44,7 @@ const Main: React.FC<MainProps> = ({ onSubmit }) => (
       >
         Welcome to the
       </Typography>
-      <LogoImage />
+      <StyledLogo />
     </MainHeader>
     <Container>
       <Formik
