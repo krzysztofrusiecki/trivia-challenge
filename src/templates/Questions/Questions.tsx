@@ -4,7 +4,7 @@ import theme from 'src/theme';
 import { ButtonVariant } from 'src/interfaces/Button';
 import { FontWeight, TextAlign } from 'src/interfaces/Typography';
 import { CloseButtonVariant } from 'src/interfaces/CloseButton';
-import { Result } from 'src/interfaces/Results';
+import { QuestionsProps } from 'src/interfaces/Questions';
 import Button from 'src/components/Button';
 import CloseButton from 'src/components/CloseButton';
 import Typography from 'src/components/Typography';
@@ -22,14 +22,6 @@ import {
   TitleContainer,
   LevelWrapper,
 } from './Questions.styles';
-
-export interface QuestionsProps {
-  result: Result;
-  completedQuestions: number;
-  totalQuestions: number;
-  onCloseButtonClick: () => void;
-  onAnswerClick: (answer: boolean) => void;
-}
 
 const Questions: React.FC<QuestionsProps> = ({
   result,
