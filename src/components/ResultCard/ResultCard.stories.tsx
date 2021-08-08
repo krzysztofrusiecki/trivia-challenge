@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof ResultCard>;
 
 const defaultProps = {
-  children:
+  question:
     'The fourth funnel of the RMS Titanic was fake designed to make the ship look more powerful and symmetrical.',
 };
 

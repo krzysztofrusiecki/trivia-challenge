@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import _map from 'lodash/map';
 import _reduce from 'lodash/reduce';
 
+import theme from 'src/theme';
 import { FontColor, FontWeight } from 'src/interfaces/Typography';
 import { ResultsProps } from 'src/interfaces/Results';
 import Button from 'src/components/Button';
@@ -28,6 +29,12 @@ const Results: React.FC<ResultsProps> = ({
   onPlayAgainClick,
   onCloseButtonClick,
 }) => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
+  }, []);
+
   const correctAnswersNumber = _reduce(
     results,
     (acc, result) => (result.isAnswerCorrect ? acc + 1 : acc),
@@ -45,7 +52,17 @@ const Results: React.FC<ResultsProps> = ({
             <ImageWrapper>
               <PersonIcon />
             </ImageWrapper>
-            <Typography color={FontColor.WHITE} fontWeight={FontWeight.BOLD}>
+            <Typography
+              fontSize={
+                theme.fontSize[
+                  width && width > theme.breakpoints.small
+                    ? 'regular'
+                    : 'medium'
+                ]
+              }
+              color={FontColor.WHITE}
+              fontWeight={FontWeight.BOLD}
+            >
               You scored <CorrectAnswers>{correctAnswersNumber}</CorrectAnswers>
               /{results.length}
             </Typography>
@@ -59,10 +76,9 @@ const Results: React.FC<ResultsProps> = ({
           {_map(results, (result) => (
             <ResultCard
               key={result.question}
+              question={result.question}
               isCorrect={result.isAnswerCorrect}
-            >
-              {result.question}
-            </ResultCard>
+            />
           ))}
         </ResultsContainer>
         <ButtonWrapper>

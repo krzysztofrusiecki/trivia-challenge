@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
+
 interface SelectOptionProps {
   isActive: boolean;
 }
@@ -29,6 +31,10 @@ export const SelectPlaceholder = styled.div`
   background-color: ${({ theme }) => theme.palette.transparent};
   color: ${({ theme }) => theme.palette.white};
   font-size: ${({ theme }) => theme.fontSize.medium};
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 54px;
+  }
 `;
 
 export const SelectOptionsWrapper = styled.div`
@@ -60,6 +66,10 @@ export const SelectOption = styled.div<SelectOptionProps>`
   &:hover {
     background-color: ${({ theme }) => theme.palette.blueHover};
   }
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 54px;
+  }
 `;
 
 export const StyledArrowDownIcon = styled.div`
@@ -78,6 +88,13 @@ export const StyledArrowDownIcon = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.blueHover};
+  }
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 20px;
+    width: 20px;
+    top: 27px;
+    right: ${({ theme }) => theme.spacing(2)};
   }
 `;
 

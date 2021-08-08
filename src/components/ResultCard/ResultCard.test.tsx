@@ -7,10 +7,11 @@ import ResultCard from './ResultCard';
 
 const setup = () => {
   renderWithProviders(
-    <ResultCard isCorrect>
-      The fourth funnel of the RMS Titanic was fake designed to make the ship
-      look more powerful and symmetrical.
-    </ResultCard>,
+    <ResultCard
+      question="The fourth funnel of the RMS Titanic was fake designed to make the ship
+    look more powerful and symmetrical."
+      isCorrect
+    />,
   );
 
   const component = screen.getByTestId('result-card');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, Form } from 'formik';
 
 import theme from 'src/theme';
@@ -33,66 +33,78 @@ const selectOptions = [
   },
 ];
 
-const Main: React.FC<MainProps> = ({ onSubmit }) => (
-  <MainWrapper>
-    <MainHeader>
-      <Typography
-        color={FontColor.WHITE}
-        fontSize={theme.fontSize.huge}
-        fontWeight={FontWeight.BOLD}
-        textAlign={TextAlign.CENTER}
-      >
-        Welcome to the
-      </Typography>
-      <StyledLogo />
-    </MainHeader>
-    <Container>
-      <Formik
-        initialValues={{
-          difficulty: 'easy',
-          amount: '10',
-        }}
-        onSubmit={onSubmit}
-      >
-        {({ values, setFieldValue, handleSubmit }) => (
-          <Form>
-            <FormWrapper>
-              <Select
-                value={values.difficulty}
-                options={selectOptions}
-                label={
-                  <StyledLabel>
-                    <IconContainer>
-                      <DifficultyIcon />
-                    </IconContainer>
-                    Difficulty
-                  </StyledLabel>
-                }
-                onChange={(value) => setFieldValue('difficulty', value)}
-              />
-              <Input
-                value={values.amount}
-                label={
-                  <StyledLabel>
-                    <IconContainer>
-                      <AmountIcon />
-                    </IconContainer>
-                    Amount
-                  </StyledLabel>
-                }
-                onChange={(value) => {
-                  setFieldValue('amount', formatNumericalValue(value));
-                }}
-              />
-            </FormWrapper>
-            <Button type="submit" onButtonClick={handleSubmit}>
-              Start quiz
-            </Button>
-          </Form>
-        )}
-      </Formik>
-    </Container>
-  </MainWrapper>
-);
+const Main: React.FC<MainProps> = ({ onSubmit }) => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    window.addEventListener('resize', () => setWidth(window.innerWidth));
+  }, []);
+
+  return (
+    <MainWrapper>
+      <MainHeader>
+        <Typography
+          color={FontColor.WHITE}
+          fontSize={
+            theme.fontSize[
+              width && width > theme.breakpoints.small ? 'huge' : 'large'
+            ]
+          }
+          fontWeight={FontWeight.BOLD}
+          textAlign={TextAlign.CENTER}
+        >
+          Welcome to the
+        </Typography>
+        <StyledLogo />
+      </MainHeader>
+      <Container>
+        <Formik
+          initialValues={{
+            difficulty: 'easy',
+            amount: '10',
+          }}
+          onSubmit={onSubmit}
+        >
+          {({ values, setFieldValue, handleSubmit }) => (
+            <Form>
+              <FormWrapper>
+                <Select
+                  value={values.difficulty}
+                  options={selectOptions}
+                  label={
+                    <StyledLabel>
+                      <IconContainer>
+                        <DifficultyIcon />
+                      </IconContainer>
+                      Difficulty
+                    </StyledLabel>
+                  }
+                  onChange={(value) => setFieldValue('difficulty', value)}
+                />
+                <Input
+                  value={values.amount}
+                  label={
+                    <StyledLabel>
+                      <IconContainer>
+                        <AmountIcon />
+                      </IconContainer>
+                      Amount
+                    </StyledLabel>
+                  }
+                  onChange={(value) => {
+                    setFieldValue('amount', formatNumericalValue(value));
+                  }}
+                />
+              </FormWrapper>
+              <Button type="submit" onButtonClick={handleSubmit}>
+                Start quiz
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </Container>
+    </MainWrapper>
+  );
+};
 
 export default Main;

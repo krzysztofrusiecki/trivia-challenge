@@ -46,6 +46,9 @@ const theme = {
   fontFamily: {
     main: 'Quicksand',
   },
+  breakpoints: {
+    small: 380,
+  },
   spacing,
 } as const;
 

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
 import { StarVariant } from 'src/interfaces/Stars';
 import { ReactComponent as StarIcon } from 'src/assets/icons/star.svg';
 
@@ -14,6 +15,10 @@ export const StarsWrapper = styled.div`
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 22px;
+  }
 `;
 
 export const StyledStarIcon = styled(StarIcon)<IconProps>`
@@ -35,5 +40,10 @@ export const StyledStarIcon = styled(StarIcon)<IconProps>`
 
   &:last-of-type {
     margin-right: 0;
+  }
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 22px;
+    weight: 22px;
   }
 `;

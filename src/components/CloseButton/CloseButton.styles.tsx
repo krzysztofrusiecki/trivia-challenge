@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
 import { CloseButtonVariant } from 'src/interfaces/CloseButton';
 import { ReactComponent as XIcon } from 'src/assets/icons/x.svg';
 
@@ -14,6 +15,11 @@ export const IconContainer = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 15px;
+    width: 15px;
+  }
 `;
 
 export const StyledIcon = styled(XIcon)<IconProps>`
