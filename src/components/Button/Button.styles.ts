@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
 import { ButtonVariant } from 'src/interfaces/Button';
 
 interface StyledButtonProps {
@@ -55,5 +56,10 @@ export const StyledButton = styled.button<StyledButtonProps>`
           return theme.palette.gradients.rose;
       }
     }};
+  }
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 64px;
+    margin-bottom: ${({ theme }) => theme.spacing(2)};
   }
 `;

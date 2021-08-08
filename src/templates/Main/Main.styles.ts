@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
 import { ReactComponent as LogoImage } from 'src/assets/logo.svg';
 
 export const MainWrapper = styled.div`
@@ -15,6 +16,10 @@ export const MainWrapper = styled.div`
 
 export const Container = styled.div`
   width: 446px;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 319px;
+  }
 `;
 
 export const MainHeader = styled.div`
@@ -23,6 +28,10 @@ export const MainHeader = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 372px;
+  }
 `;
 
 export const StyledLogo = styled(LogoImage)`
@@ -32,6 +41,16 @@ export const StyledLogo = styled(LogoImage)`
   & rect {
     width: 100%;
     height: 400px;
+  }
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 372px;
+    height: 248px;
+
+    & rect {
+      width: 372px;
+      height: 248px;
+    }
   }
 `;
 

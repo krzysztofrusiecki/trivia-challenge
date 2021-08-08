@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
+
 export const InputWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -21,6 +23,10 @@ export const StyledInput = styled.input`
   color: ${({ theme }) => theme.palette.white};
   font-size: ${({ theme }) => theme.fontSize.medium};
   outline: none;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 54px;
+  }
 `;
 
 export const StorybookStyledLabel = styled.div`

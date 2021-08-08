@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
+import appTheme from 'src/theme';
+
 export const QuestionsWrapper = styled.div`
   width: 1040px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 340px;
+  }
 `;
 
 export const Container = styled.div`
@@ -13,6 +19,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 340px;
+  }
 `;
 
 export const CloseButtonWrapper = styled.div`
@@ -30,6 +40,11 @@ export const CloseButtonWrapper = styled.div`
 
   &:hover {
     background-color: ${({ theme }) => theme.palette.lightBlue};
+  }
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    height: 15px;
+    width: 15px;
   }
 `;
 
@@ -49,6 +64,10 @@ export const ProgressWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 340px;
+  }
 `;
 
 export const PointsWrapper = styled.div`
@@ -60,6 +79,10 @@ export const CorrectAnswers = styled.span`
   color: ${({ theme }) => theme.palette.rose};
   font-size: ${({ theme }) => theme.fontSize.large};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    font-size: ${({ theme }) => theme.fontSize.regular};
+  }
 `;
 
 export const QuestionWrapper = styled.div`
@@ -76,4 +99,8 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: ${appTheme.breakpoints.small}px) {
+    width: 340px;
+  }
 `;
