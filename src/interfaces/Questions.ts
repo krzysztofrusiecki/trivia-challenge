@@ -1,7 +1,6 @@
-import { Result } from './Results';
-
 export interface QuestionsProps {
-  result: Result;
+  category: string;
+  question: string;
   completedQuestions: number;
   totalQuestions: number;
   onCloseButtonClick: () => void;

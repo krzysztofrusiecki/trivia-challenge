@@ -71,3 +71,10 @@ export const CloseButtonWrapper = styled.div`
     background-color: ${({ theme }) => theme.palette.blueHover};
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  width: 446px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

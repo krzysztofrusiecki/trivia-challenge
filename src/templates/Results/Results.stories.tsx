@@ -12,28 +12,22 @@ export default {
 const defaultProps = {
   results: [
     {
-      id: '1',
       question:
         'Switzerland has four national languages, English being one of them.',
-      category: 'Language',
-      correctAnswer: true,
-      userAnswer: true,
+      answer: true,
+      isAnswerCorrect: true,
     },
     {
-      id: '2',
       question:
         'Switzerland has four national languages, English being one of them.',
-      category: 'Language',
-      correctAnswer: false,
-      userAnswer: true,
+      answer: true,
+      isAnswerCorrect: false,
     },
     {
-      id: '3',
       question:
         'Switzerland has four national languages, English being one of them.',
-      category: 'Language',
-      correctAnswer: true,
-      userAnswer: true,
+      answer: true,
+      isAnswerCorrect: true,
     },
   ],
   onPlayAgainClick: action('onPlayAgainClick'),

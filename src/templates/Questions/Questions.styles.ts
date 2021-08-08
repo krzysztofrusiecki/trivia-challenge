@@ -44,7 +44,7 @@ export const LevelWrapper = styled.div`
 `;
 
 export const ProgressWrapper = styled.div`
-  width: 100%;
+  width: 446px;
   margin-bottom: ${({ theme }) => theme.spacing(7.5)};
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ export const QuestionWrapper = styled.div`
 `;
 
 export const ButtonsWrapper = styled.div`
-  width: 100%;
+  width: 446px;
   display: flex;
   flex-direction: column;
   align-items: center;
