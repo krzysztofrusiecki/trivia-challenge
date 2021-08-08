@@ -1,49 +1,44 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
+import { RootState } from 'src/store';
+import {
+  stopCurrentGame,
+  fetchQuestions,
+  restartCurrentGame,
+} from 'src/slices/gameSlice';
 import ResultsTemplate from 'src/templates/Results';
 
 import { Wrapper } from './Results.styles';
 
 const Results: React.FC = () => {
+  const answers = useSelector((state: RootState) => state.game.answers);
+  const questions = useSelector((state: RootState) => state.game.questions);
+  const initialValues = useSelector(
+    (state: RootState) => state.game.initialValues,
+  );
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const onCloseButtonClick = () => {
-    console.log('clicked close button');
+    dispatch(stopCurrentGame());
+    history.push('/');
   };
 
   const onPlayAgainClick = () => {
-    console.log('clicked play again button');
-  };
+    dispatch(restartCurrentGame());
+    dispatch(fetchQuestions(initialValues));
 
-  const results = [
-    {
-      id: '1',
-      question:
-        'Switzerland has four national languages, English being one of them.',
-      category: 'Language',
-      correctAnswer: true,
-      userAnswer: true,
-    },
-    {
-      id: '2',
-      question:
-        'Switzerland has four national languages, English being one of them.',
-      category: 'Language',
-      correctAnswer: false,
-      userAnswer: true,
-    },
-    {
-      id: '3',
-      question:
-        'Switzerland has four national languages, English being one of them.',
-      category: 'Language',
-      correctAnswer: true,
-      userAnswer: true,
-    },
-  ];
+    if (questions.data) {
+      history.push('/questions');
+    }
+  };
 
   return (
     <Wrapper>
       <ResultsTemplate
-        results={results}
+        results={answers}
         onPlayAgainClick={onPlayAgainClick}
         onCloseButtonClick={onCloseButtonClick}
       />

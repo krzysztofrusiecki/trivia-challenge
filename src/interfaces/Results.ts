@@ -1,9 +1,7 @@
 export interface Result {
-  id: string;
   question: string;
-  category: string;
-  correctAnswer: boolean;
-  userAnswer?: boolean;
+  answer: boolean;
+  isAnswerCorrect: boolean;
 }
 
 export interface ResultsProps {

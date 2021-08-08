@@ -3,13 +3,14 @@ import QuestionsPage from 'src/pages/Questions';
 import ResultsPage from 'src/pages/Results';
 
 const config = {
+  apiBaseUrl: 'https://opentdb.com/api.php',
   routes: [
     {
       path: '/',
       component: MainPage,
     },
     {
-      path: '/question',
+      path: '/questions',
       component: QuestionsPage,
     },
     {

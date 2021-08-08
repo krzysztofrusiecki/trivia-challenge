@@ -1,36 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
+import { RootState } from 'src/store';
+import { saveAnswer, stopCurrentGame } from 'src/slices/gameSlice';
 import QuestionsTemplate from 'src/templates/Questions';
 
 import { Wrapper } from './Questions.styles';
 
 const Questions: React.FC = () => {
+  const quiz = useSelector((state: RootState) => state.game.quiz);
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const onCloseButtonClick = () => {
-    console.log('clicked close button');
+    dispatch(stopCurrentGame());
+    history.push('/');
   };
 
   const onAnswerClick = (answer: boolean) => {
-    console.log('clicked answer', answer);
+    dispatch(saveAnswer(answer));
   };
 
-  const completedQuestions = 4;
-
-  const totalQuestions = 4;
-
-  const result = {
-    id: '1',
-    category: 'Entertainment: Videogames',
-    question:
-      'The retail disc of Tony Hawk’s Pro Skater 5 only comes with the tutorial',
-    correctAnswer: false,
-  };
+  useEffect(() => {
+    if (quiz.currentQuestionIndex > quiz.totalQuestions) {
+      history.push('/results');
+    }
+  }, [history, quiz.currentQuestionIndex, quiz.totalQuestions]);
 
   return (
     <Wrapper>
       <QuestionsTemplate
-        result={result}
-        completedQuestions={completedQuestions}
-        totalQuestions={totalQuestions}
+        category={quiz.currentQuestion.category}
+        question={quiz.currentQuestion.question}
+        completedQuestions={quiz.currentQuestionIndex}
+        totalQuestions={quiz.totalQuestions}
         onAnswerClick={onAnswerClick}
         onCloseButtonClick={onCloseButtonClick}
       />

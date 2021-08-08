@@ -24,7 +24,8 @@ import {
 } from './Questions.styles';
 
 const Questions: React.FC<QuestionsProps> = ({
-  result,
+  category,
+  question,
   completedQuestions,
   totalQuestions,
   onCloseButtonClick,
@@ -45,7 +46,7 @@ const Questions: React.FC<QuestionsProps> = ({
           textAlign={TextAlign.CENTER}
           lineHeight="100px"
         >
-          {result.category}
+          {category}
         </Typography>
       </TitleContainer>
       <LevelWrapper>
@@ -75,7 +76,7 @@ const Questions: React.FC<QuestionsProps> = ({
           fontSize={theme.fontSize.great}
           textAlign={TextAlign.CENTER}
         >
-          {result.question}
+          {question}
         </Typography>
       </QuestionWrapper>
       <ButtonsWrapper>

@@ -20,6 +20,7 @@ import {
   ImageWrapper,
   CorrectAnswers,
   CloseButtonWrapper,
+  ButtonWrapper,
 } from './Results.styles';
 
 const Results: React.FC<ResultsProps> = ({
@@ -29,8 +30,7 @@ const Results: React.FC<ResultsProps> = ({
 }) => {
   const correctAnswersNumber = _reduce(
     results,
-    (acc, result) =>
-      result.correctAnswer === result.userAnswer ? acc + 1 : acc,
+    (acc, result) => (result.isAnswerCorrect ? acc + 1 : acc),
     0,
   );
 
@@ -58,14 +58,16 @@ const Results: React.FC<ResultsProps> = ({
         <ResultsContainer>
           {_map(results, (result) => (
             <ResultCard
-              key={result.id}
-              isCorrect={result.correctAnswer === result.userAnswer}
+              key={result.question}
+              isCorrect={result.isAnswerCorrect}
             >
               {result.question}
             </ResultCard>
           ))}
         </ResultsContainer>
-        <Button onButtonClick={onPlayAgainClick}>Play again</Button>
+        <ButtonWrapper>
+          <Button onButtonClick={onPlayAgainClick}>Play again</Button>
+        </ButtonWrapper>
       </Container>
     </ResultsWrapper>
   );
